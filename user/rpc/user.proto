@@ -1,0 +1,25 @@
+syntax = "proto3"; // 指定 proto 版本
+
+package user; // 默认包名
+
+option go_package = "./user"; // Go包路径
+
+// 定义 user 服务名
+service User {
+  // 获取用户信息
+  rpc GetUser(GetUserReq) returns (GetUserResp) {}
+}
+
+// 定义请求参数
+message GetUserReq {
+  // 属性类型 属性名 = 标识符
+  int32 id = 1;
+}
+
+// 定义响应结果
+message GetUserResp {
+  int32 id = 1;
+  string name = 2;
+  string mail = 3;
+  string phone = 4;
+}

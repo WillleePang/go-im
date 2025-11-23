@@ -1,0 +1,11 @@
+cd user/rpc
+# goctl rpc 命令
+goctl rpc protoc user.proto -go_out=. -go-grpc_out=. --zrpc_out=.
+go mod tidy
+
+cd user/api
+# goctl api 命令
+goctl api go -api user.api -dir . -style gozero
+go mod tidy
+
+goctl model mysql ddl --src user.sql --dir ./models/ -c

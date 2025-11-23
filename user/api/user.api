@@ -1,0 +1,28 @@
+syntax = "v1"
+
+info (
+	title: "用户服务 api"
+	desc:  "用户服务 api 内容"
+)
+
+type (
+	// 获取用户信息请求
+	GetUserReq {
+		Id int32 `json:"id"`
+	}
+	// 获取用户信息响应
+	GetUserResp {
+		Id    int32  `json:"id"`
+		Name  string `json:"name"`
+		Mail  string `json:"mail"`
+		Phone string `json:"phone"`
+	}
+)
+
+// 定义 user api 服务描述
+service user {
+	// 定义 api 请求url、参数、响应 获取用户信息
+	@handler GetUser
+	get /GetUser (GetUserReq) returns (GetUserResp)
+}
+
